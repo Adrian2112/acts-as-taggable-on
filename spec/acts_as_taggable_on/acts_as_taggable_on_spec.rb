@@ -282,4 +282,29 @@ describe 'Acts As Taggable On' do
     end
   end
 
+  describe '@@tags_table' do
+    context 'if set' do
+      before do
+        @tags_table = :different_table
+        ActsAsTaggableOn.tags_table = @tags_table
+      end
+
+      it 'should set ActsAsTaggableOn::Tag.table_name' do
+        expect(ActsAsTaggableOn::Tag.table_name.to_s).to eq(@tags_table.to_s)
+      end
+    end
+  end
+
+  describe '@@taggings_table' do
+    context 'if set' do
+      before do
+        @taggings_table = :different_table
+        ActsAsTaggableOn.taggings_table = @taggings_table
+      end
+
+      it 'should set ActsAsTaggableOn::Tag.table_name' do
+        expect(ActsAsTaggableOn::Tagging.table_name.to_s).to eq(@taggings_table.to_s)
+      end
+    end
+  end
 end
