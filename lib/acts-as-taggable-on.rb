@@ -93,6 +93,16 @@ WARNING
       @delimiter = string
     end
 
+    def tags_table=(tags_table)
+      ActsAsTaggableOn::Tag.table_name = tags_table
+      @tags_table = tags_table
+    end
+
+    def taggings_table=(taggings_table)
+      ActsAsTaggableOn::Tagging.table_name = taggings_table
+      @taggings_table = taggings_table
+    end
+
     def force_binary_collation=(force_bin)
       if Utils.using_mysql?
         if force_bin
